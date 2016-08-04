@@ -1,2 +1,0 @@
-class Blok < ApplicationRecord
-end
