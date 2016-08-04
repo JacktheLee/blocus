@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head></head>
+    <body>
+        
+        <%Blok.all.each do |p| %>
+        <%if p.user == "default" %>
+            <button type="button submit" id="default" class="btn btn-danger click1">
+            <div style="width:100px; height:100px">
+                <p style="text-align:center"> lat : <%=p.lat%> </p>
+                <p style="text-align:center"> lng : <%=p.lng%> </p>
+                <p style="text-align:center"> <%=p.user%> </p>
+            </div>
+            </button>
+        <%else%>
+            <button type="button submit" id="default" class="btn btn-primary click2">
+            <div style="width:100px; height:100px">
+                <p style="text-align:center"> lat : <%=p.lat%> </p>
+                <p style="text-align:center"> lng : <%=p.lng%> </p>
+                <p id="user" style="text-align:center"> <%=p.user%> </p>
+            </div>
+            </button>
+        <%end%>
+            
+        <%end%>
+        
+        
+        <div class="inner"></div>
+        
+        
+        
+        <script>
+        
+        $('.click1').click(function(){
+    
+            $(".inner").empty();
+            $(".inner").append('<div class="container"><h2 class="section-heading">info_window</h2><form action="home/write" method="POST"><div class="form-group"><label for="exampleInputPassword1">제목</label><input name="title" type="text" class="form-control" id="title" placeholder="제목을 입력하세요"></div><div class="form-group"><label for="exampleInputPassword1">내용</label><textarea name="content" class="form-control" id="content" rows="3" placeholder="내용을 입력하세요"></textarea></div><button type="submit" class="btn btn-default">Submit</button></form></div>');
+
+    
+            
+            $.ajax({
+              method: "POST",
+              url: "/home/main",
+              data: { title: "info_window" }
+            }).done(function() {
+
+             });
+             
+        });
+        $('.click2').click(function(){
+    
+            $(".inner").empty();
+            $(".inner").append('already conquered');
+
+    
+            
+            $.ajax({
+              method: "POST",
+              url: "/home/main",
+              data: { title: "info_window" }
+            }).done(function() {
+
+             });
+             
+        });
+        </script>
+    
+    
+    
+    </body>
+
+
+
+</html>
